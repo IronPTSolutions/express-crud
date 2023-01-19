@@ -1,0 +1,14 @@
+<h1>{{title}}</h1>
+<hr/>
+
+<div class="card">
+  <ul class="list-group list-group-flush">
+    {{#each users as |user|}}
+        <li class="list-group-item">
+            <a href="/users/{{user.id}}">
+            #{{user.id}} - {{user.name}}
+            </a>
+        </li>
+    {{/each}}
+  </ul>
+</div>

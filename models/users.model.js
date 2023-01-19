@@ -5,24 +5,31 @@ const users = [
   { id: "2", name: "Carlos" },
 ];
 
+setInterval(() => {
+  users.push({
+    id: (users.length + 1).toString(),
+    name: `User ${users.length + 1}`,
+  });
+}, 5000);
+
 const User = {
   find() {
     return new Promise((resolve) => {
-      window.setTimeout(() => {
+      setTimeout(() => {
         resolve(users);
       }, Math.random() * 1000);
     });
   },
   findById(id) {
     return new Promise((resolve) => {
-      window.setTimeout(() => {
+      setTimeout(() => {
         resolve(users.find((u) => u.id === id));
       }, Math.random() * 1000);
     });
   },
   create(user) {
     return new Promise((resolve) => {
-      window.setTimeout(() => {
+      setTimeout(() => {
         const newUser = { ...user, id: `${users.length + 1}` };
         users.push(newUser);
         resolve(newUser);
@@ -31,7 +38,7 @@ const User = {
   },
   findByIdAndUpdate(id, patch) {
     return new Promise((resolve) => {
-      window.setTimeout(() => {
+      setTimeout(() => {
         const user = users.find((u) => u.id === id);
         Object.assign(user, patch);
         resolve(user);
@@ -40,7 +47,7 @@ const User = {
   },
   findByIdAndDelete(id) {
     return new Promise((resolve) => {
-      window.setTimeout(() => {
+      setTimeout(() => {
         const user = users.find((u) => u.id === id);
         users = users.filter((u) => u !== user);
         resolve(user);

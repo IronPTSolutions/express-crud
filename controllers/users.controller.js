@@ -24,11 +24,26 @@ module.exports.detail = (req, res) => {
     .catch(() => {});
 };
 
+// user create form
+module.exports.create = (req, res) => {
+  res.render("users/new");
+};
+
 // user create
-module.exports.create = (req, res) => {};
+module.exports.doCreate = (req, res) => {
+  User.create(req.body)
+    .then((user) => {
+      res.redirect(`/users/${user.id}`);
+    })
+    .catch(() => {});
+};
 
 // user update
 module.exports.update = (req, res) => {};
 
 // user delete
-module.exports.delete = (req, res) => {};
+module.exports.delete = (req, res) => {
+  User.findByIdAndDelete(req.params.id).then(() => {
+    res.redirect("/users");
+  });
+};

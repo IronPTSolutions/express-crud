@@ -1,6 +1,6 @@
 // Don't need to understand this code, just use its API
 
-const users = [
+let users = [
   { id: "1", name: "Julio" },
   { id: "2", name: "Carlos" },
 ];

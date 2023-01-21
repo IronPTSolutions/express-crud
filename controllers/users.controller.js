@@ -43,7 +43,9 @@ module.exports.update = (req, res) => {};
 
 // user delete
 module.exports.delete = (req, res) => {
-  User.findByIdAndDelete(req.params.id).then(() => {
-    res.redirect("/users");
-  });
+  User.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.redirect("/users");
+    })
+    .catch(() => {});
 };
